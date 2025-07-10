@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Artist Profile and Gallery</title>
+    <title>Profile, Gallery, and Contact</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
@@ -18,77 +18,46 @@
         }
 
         .header-container {
-            background-color: #4A90E2;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            width: 100%;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .header-title {
-            font-size: 24px;
-            margin: 0;
-        }
-
-        .profiles-wrapper {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap; /* Allows wrapping on smaller screens */
-            margin: 20px 0;
-        }
-
-        .profile-container {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            height: 120px;
-            border-radius: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            background-color: white;
-            margin: 10px; /* Add margin for spacing */
+            margin-bottom: 20px;
         }
 
-        .artist-info {
-            position: absolute;
-            bottom: 30px;
-            left: 30px;
+        .profile-header {
             display: flex;
             align-items: center;
-            color: black;
-            z-index: 1;
+            padding: 15px;
+            gap: 15px;
         }
 
-        .artist-portrait {
+        .profile-photo {
+            min-width: 50px;
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            border: 3px solid white;
-            margin-right: 20px;
             overflow: hidden;
+            border: 2px solid #f0f0f0;
         }
 
-        .artist-portrait img {
+        .profile-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .artist-name {
-            font-size: 18px;
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .artist-location {
-            font-size: 12px;
-            opacity: 0.9;
-        }
-
-        .artist-text {
-            display: flex;
-            flex-direction: column;
+            color: #333;
+            margin-bottom: 2px;
         }
 
         .gallery-container {
@@ -98,6 +67,7 @@
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
 
         h1 {
@@ -173,36 +143,61 @@
             opacity: 0.8;
         }
 
-        @media (max-width: 600px) {
-            .header-title {
-                font-size: 20px;
-            }
+        .contact-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 auto;
+        }
 
-            .profile-container {
-                height: 100px;
-            }
+        .contact-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
 
-            .artist-info {
-                left: 15px;
-                bottom: 15px;
-            }
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 12px 24px;
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto;
+        }
 
-            .artist-portrait {
-                width: 40px;
-                height: 40px;
-                margin-right: 10px;
-            }
+        .instagram-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(193, 53, 132, 0.4);
+        }
 
-            .artist-name {
-                font-size: 16px;
-            }
-
-            .artist-location {
-                font-size: 11px;
-            }
+        .instagram-icon {
+            width: 24px;
+            height: 24px;
         }
 
         @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: row;
+                text-align: left;
+                padding: 10px;
+            }
+
+            .profile-name {
+                font-size: 1rem;
+            }
+
             .gallery {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
@@ -215,6 +210,20 @@
 
             .gallery-image {
                 height: 200px;
+            }
+
+            .contact-container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+
+            .instagram-link {
+                padding: 10px 20px;
+                font-size: 0.9rem;
             }
         }
 
@@ -284,53 +293,31 @@
     </style>
 </head>
 <body>
-
     <div class="header-container">
-        <h1 class="header-title">ashhxart</h1>
-    </div>
-
-    <div class="profiles-wrapper">
-        <div class="profile-container">
-            <div class="artist-info">
-                <div class="artist-portrait">
-                    <img src="pp.png" alt="Artist portrait" />
-                </div>
-                <div class="artist-text">
-                    <a href="https://instagram.com/aryan_m1105" target="_blank">ARYAN</a>
-                </div>
+        <header class="profile-header">
+            <div class="profile-photo">
+                <img src="logo.png" alt="Small profile photo thumbnail" />
             </div>
-        </div>
-
-        <div class="profile-container">
-            <div class="artist-info">
-                <div class="artist-portrait">
-                    <img src="in.png" alt="Artist portrait" />
-                </div>
-                <div class="artist-text">
-                     <a href="https://instagram.com/ashhxart" target="_blank">@ashhxart</a>
-
-                </div>
+            <div class="profile-info">
+                <h1 class="profile-name">AshhxArt</h1>
             </div>
-        </div>
+        </header>
     </div>
 
     <div class="gallery-container">
-        <h1>Art Gallery</h1>
-        <h4><center>Click on photo to view it</center></h4>
+        <h1>Gallery</h1>
         <div class="gallery">
 
-
-             <!-- Artwork 6 -->
+            <!-- 6 -->
             <div class="gallery-item">
                 <img src="UrbanLabyrinth.png" alt="Urban Labyrinth" class="gallery-image">
                 <div class="image-info">
                     <div class="image-title">Urban Labyrinth<span class="image-year">2025</span></div>
-                    <div class="image-description">    </div>
+                    <div class="image-description">  </div>
                 </div>
             </div>
 
-
-             <!-- Artwork 5 -->
+            <!-- 5 -->
             <div class="gallery-item">
                 <img src="RhythmofBlessings.png" alt="Rhythm of Blessings" class="gallery-image">
                 <div class="image-info">
@@ -339,41 +326,39 @@
                 </div>
             </div>
 
-             
-            <!-- Artwork 4 -->
+            <!-- 4 -->
             <div class="gallery-item">
                 <img src="StructuredHarmony.png" alt="Structured Harmony" class="gallery-image">
                 <div class="image-info">
                     <div class="image-title">Structured Harmony<span class="image-year">2025</span></div>
-                    <div class="image-description">    </div>
+                    <div class="image-description">  </div>
                 </div>
             </div>
 
-            <!-- Artwork 3 -->
+            <!-- 3 -->
             <div class="gallery-item">
                 <img src="FiredHorizon.png" alt="Fired Horizon" class="gallery-image">
                 <div class="image-info">
                     <div class="image-title">Fired Horizon<span class="image-year">2025</span></div>
-                    <div class="image-description">    </div>
+                    <div class="image-description">  </div>
                 </div>
             </div>
 
-            <!-- Artwork 2 -->
+            <!-- 2 -->
             <div class="gallery-item">
                 <img src="UnbreakableLove.png" alt="Unbreakable Love" class="gallery-image">
                 <div class="image-info">
                     <div class="image-title">Unbreakable Love<span class="image-year">2025</span></div>
-                    <div class="image-description">   </div>
+                    <div class="image-description">  </div>
                 </div>
             </div>
 
-            
-            <!-- Artwork 1 -->
+            <!-- 1 -->
             <div class="gallery-item">
                 <img src="AnushkaSen.png" alt="Anushka Sen" class="gallery-image">
                 <div class="image-info">
                     <div class="image-title">Anushka Sen<span class="image-year">2025</span></div>
-                    <div class="image-description">   </div>
+                    <div class="image-description">  </div>
                 </div>
             </div>
         </div>
@@ -412,14 +397,18 @@
 
         function changeImage(step) {
             currentImageIndex += step;
+            
+            // Circular navigation
             if (currentImageIndex >= galleryImages.length) {
                 currentImageIndex = 0;
             } else if (currentImageIndex < 0) {
                 currentImageIndex = galleryImages.length - 1;
             }
+            
             lightboxImage.src = galleryImages[currentImageIndex].src;
         }
 
+        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (lightbox.classList.contains('active')) {
                 if (e.key === 'Escape') {
@@ -432,5 +421,16 @@
             }
         });
     </script>
+
+    <div class="contact-container">
+        <h1>Connect With Me</h1>
+        <a href="https://www.instagram.com/ashhxart" class="instagram-link" target="_blank" rel="noopener noreferrer" aria-label="Follow me on Instagram">
+            <!-- Instagram SVG icon -->
+            <svg class="instagram-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+            </svg>
+            Follow on Instagram
+        </a>
+    </div>
 </body>
 </html>
